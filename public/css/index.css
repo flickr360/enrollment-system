@@ -1,0 +1,294 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    overflow: hidden; 
+}
+.container {
+    display: flex;
+    height: 100vh;
+}
+.container .r-container{
+    float: right;
+    padding: 20px;
+}
+.container .l-container{
+    padding-top: 20px;
+    padding-left: 20px;
+}
+.l-container .left-section{
+    width: 800px;
+}
+.widget.selected-courses{
+    margin-top: 20px;
+    background-color: #4b79a1;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 820px;
+    max-height: 430px;
+    bottom: 0;
+    overflow: hidden;   
+    min-height: 198px;
+}
+
+.menu-item a {
+    position: relative;
+    text-decoration: none;
+    color: inherit; 
+    padding-bottom: 5px;
+}
+
+.menu-item a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #e2e2e2; 
+    transition: width 0.3s ease;
+}
+
+.menu-item a:hover::after {
+    width: 100%;
+}
+
+.sidebar {
+    width: 200px;
+    background: linear-gradient(135deg, #283e51, #4b79a1);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 0px 10px 10px 0px;
+    text-align: center;
+}
+
+.sidebar .logo {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.sidebar .logo img {
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ffffff;
+}
+
+.sidebar .menu {
+    list-style: none;
+    padding: 0;
+    margin-top: 40px;
+}
+
+.sidebar .menu-item {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.sidebar .menu-item a {
+    color: #e2e2e2;
+    text-decoration: none;
+    display: block;
+    padding: 10px 0;
+    font-size: 16px;
+}
+
+.sidebar .logout {
+    margin-top: auto;
+    border-top: 2px solid #e2e2e2;
+    padding-top: 10px;
+    transition: border-color 0.3s ease;
+    text-align: center;
+}
+
+.sidebar .logout button {
+    background: none !important;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Left Section */
+.left-section {
+    background-color: #4b79a1;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* The top part of the left section */
+.left-section h1 {
+    font-size: 28px;
+    color: #e2e2e2;
+    margin: 0;
+}
+
+.left-section p {
+    margin-top: 10px;
+    color: #e2e2e2;
+    font-size: 16px;
+}
+
+/* Right Section */
+.right-section {
+    background-color: #4b79a1;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.widget.selected-courses h3 {
+    font-size: 24px;
+    color: #e2e2e2;
+    margin-bottom: 15px;
+}
+
+.widget.selected-courses .selected-course-list {
+    list-style: none;
+    padding-left: 0;
+    overflow-y: auto;
+    max-height: 295px;
+}
+
+.widget.selected-courses .selected-course-list li {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.widget.selected-courses .selected-course-list li strong {
+    font-size: 18px;
+    color: #2c3e50;
+}
+
+.widget.selected-courses .selected-course-list li p {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin: 5px 0;
+}
+
+/* Notifications Widget */
+.widget.notifications {
+    background-color: #81b3df;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.widget.notifications h3 {
+    font-size: 19px;
+    margin-top: 0;
+}
+
+.notification-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notification-list li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.notification-list li .notification-text {
+    font-size: 0.95rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.notification-list li .notification-time {
+    font-size: 0.8rem;
+    color: #333;
+}
+
+.view-all:hover {
+    text-decoration: underline;
+}
+
+/* Activity Calendar Widget */
+.widget.activity-calendar {
+    border-radius: 10px;
+    background-color: #81b3df;
+    padding: 15px;
+}
+
+.widget.activity-calendar h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+/* Event List Styling */
+.event-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.event-list li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.event-list li .event-date {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.event-list li .event-name {
+    font-size: 0.95rem;
+    color: #333;
+}
+
+/* Hover effect */
+.event-list li:hover {
+    background-color: #f0f4f8;
+    cursor: pointer;
+}
+
+.widget:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* General button styling */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#delete-courses{
+    background-color: #903030;
+    color: white;
+}
+#delete-courses:hover{
+    background-color: #ff0000
+}
+#update-courses{
+    background-color: #283e51;
+    color: white;
+}
+#update-courses:hover{
+    background-color: #3062ba
+}
+
+button[type="submit"]:last-of-type:hover {
+    background-color: #ff0000;
+}
