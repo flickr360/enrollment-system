@@ -64,15 +64,11 @@
           </div>
           <div class="detail">
             <span class="label">Student ID</span>
-            <span class="value">2286541</span>
+            <span class="value">{{ Auth::user()->id }}</span>
           </div>
           <div class="detail">
             <span class="label">Level</span>
             <span class="value">1st Year</span>
-          </div>
-          <div class="detail">
-            <span class="label">Tuition</span>
-            <span class="value tuition-status">Not Yet Paid</span>
           </div>
           <div class="detail">
             <span class="label">Department</span>

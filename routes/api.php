@@ -20,6 +20,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+use App\Http\Controllers\Api\SelectedSubjectController;
+
+Route::get('selected-subjects', [SelectedSubjectController::class, 'index']); // get all selected subj
+Route::get('selected-subjects/{id}', [SelectedSubjectController::class, 'show']); // get the specific selected subj
+Route::post('selected-subjects', [SelectedSubjectController::class, 'store']); // add a selected subject
+Route::delete('selected-subjects/{id}', [SelectedSubjectController::class, 'destroy']); // remove   
+
+
 use App\Http\Controllers\Api\CourseController;
 
 Route::get('courses', [CourseController::class, 'index']); // Fetch all courses
@@ -29,10 +37,7 @@ Route::get('courses/{id}', [CourseController::class, 'show']); // Fetch a specif
 use App\Http\Controllers\Api\UserController;
 
 Route::middleware('auth:sanctum')->group(function () {
-    // Fetch the selected subjects for the authenticated user
     Route::get('user/selected-subjects', [UserController::class, 'selectedSubjects']);
-
-    // Optionally, you can define a dashboard route
     Route::get('user/dashboard', [UserController::class, 'dashboard']);
 });
 

@@ -8,28 +8,28 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    // Get all courses
+    // get all courses
     public function index()
     {
-        // Fetch all courses from the database
+        // fetch all courses
         $courses = Course::all();
 
-        // Return the courses as a JSON response
+        // return to JSON format
         return response()->json($courses);
     }
 
-    // Get a specific course by ID
+    // get specific courseID
     public function show($id)
     {
         // Find a course by ID
         $course = Course::find($id);
 
-        // Handle case when the course is not found
+        // 
         if (!$course) {
             return response()->json(['message' => 'Course not found'], 404);
         }
 
-        // Return the course as a JSON response
+        // return to JSON format
         return response()->json($course);
     }
 }

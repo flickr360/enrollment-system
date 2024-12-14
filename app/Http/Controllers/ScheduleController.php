@@ -19,10 +19,10 @@ class ScheduleController extends Controller
     }
     public function dashboard()
     {
-        $user = auth()->user(); // Get the authenticated user
+        $user = auth()->user(); 
         $userId = $user->user_id;
     
-        $selectedSubjects = $user->selectedSubjects; // Assuming a hasMany relationship
+        $selectedSubjects = $user->selectedSubjects; 
     
         // Pass the data to the view
         return view('dashboard.index', [
@@ -35,7 +35,7 @@ class ScheduleController extends Controller
 {
     $userID = Auth::user()->id;
 
-    // Delete all selected subjects for the current user
+    // delete all subject for the current user
     SelectedSubject::where('user_id', $userID)->delete();
 
     return redirect()->route('dashboard')->with('success', 'All selected courses have been deleted.');
@@ -44,10 +44,10 @@ class ScheduleController extends Controller
 
     public function submitCourse(Request $request)
     {
-        // Validate the input
+
         $validated = $request->validate([
             'selected_subjects' => 'required|array|min:1',
-            'selected_subjects.*' => 'integer', // Assuming course IDs are integers
+            'selected_subjects.*' => 'integer', 
         ]);
 
         $userID = Auth::user()->id;
@@ -59,7 +59,6 @@ class ScheduleController extends Controller
                 ->where('course_id', $courseId)
                 ->exists();
 
-            // If it doesn't exist, create a new entry
             if (!$exists) {
                 SelectedSubject::create([
                     'user_id' => $userID,
@@ -68,7 +67,6 @@ class ScheduleController extends Controller
             }
         }
 
-        // Redirect back to the dashboard or any other page
         return redirect()->route('dashboard')->with('success', 'Courses added successfully');
     }
 
@@ -77,7 +75,6 @@ public function deleteSubject($id)
 {
     $subject = SelectedSubject::findOrFail($id);
 
-    // Delete the selected subject
     $subject->delete();
 
     return redirect()->route('dashboard')->with('success', 'Course deleted successfully.');

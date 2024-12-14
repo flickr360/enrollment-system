@@ -50,7 +50,7 @@
               <form action="{{ route('deleteSubject', $subject->id) }}" method="POST" style="display: inline;">
                 @csrf
                 @method('DELETE')
-                <button type="submit">Delete</button>
+                <button type="submit">Drop</button>
               </form>
             </li>
           @empty
@@ -68,7 +68,7 @@
         <form action="{{ route('deleteAllSubjects') }}" method="POST" style="display: inline;">
           @csrf
           @method('DELETE')
-          <button id="delete-courses" type="submit">Delete All Courses</button>
+          <button id="delete-courses" type="submit">Drop All Courses</button>
         </form>
       </div>
     </div>

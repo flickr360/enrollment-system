@@ -12,7 +12,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('auth.login'); // Ensure the view exists at resources/views/auth/login.blade.php
+        return view('auth.login'); 
     }
 
     /**
@@ -20,7 +20,7 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-        // Validate the incoming request
+
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|string|min:6',
@@ -29,24 +29,20 @@ class LoginController extends Controller
         // Attempt to authenticate
         if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
-            // Redirect to the intended page or to the dashboard
             return redirect()->intended('/dashboard')->with('success', 'Welcome back!');
         }
 
-        // If authentication fails, return with error
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
     }
 
-    /**
-     * Handle the logout request.
-     */
+
     public function logout(Request $request)
     {
-        Auth::logout(); // Log the user out
-        $request->session()->invalidate(); // Invalidate the session
-        $request->session()->regenerateToken(); // Regenerate CSRF token for security
-        return redirect('/login'); // Redirect to the login page after logout
+        Auth::logout(); 
+        $request->session()->invalidate(); 
+        $request->session()->regenerateToken(); 
+        return redirect('/login'); 
     }
 }

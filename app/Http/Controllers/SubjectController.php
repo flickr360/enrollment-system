@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 
-use App\Models\SelectedSubject; // Assuming this model exists to handle subject selections
+use App\Models\SelectedSubject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,13 +15,13 @@ class SubjectController extends Controller
      */
         public function addSubjectToSession(Request $request)
     {
-        // Retrieve existing session data
+        // retrieve existing session data
         $selectedSubjects = session('selectedSubjects', []);
 
-        // Prevent duplicates
+        // preventing duplicates
         if (!in_array($request->subject, $selectedSubjects)) {
-            $selectedSubjects[] = $request->subject; // Add new subject
-            session(['selectedSubjects' => $selectedSubjects]); // Update session
+            $selectedSubjects[] = $request->subject; 
+            session(['selectedSubjects' => $selectedSubjects]); 
         }
 
         return redirect()->route('dashboard');
@@ -29,7 +29,7 @@ class SubjectController extends Controller
     
      public function showForm()
     {
-        return view('subjects.select'); // Create a view for selecting subjects
+        return view('subjects.select'); // view for selecting subjects
     }
 
     /**
@@ -38,10 +38,10 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'subjects' => 'required|array|min:1', // Ensure at least one subject is selected
+            'subjects' => 'required|array|min:1', 
         ]);
 
-        $user = Auth::user(); // Get the currently authenticated user
+        $user = Auth::user();
 
         // Loop through the selected subjects and store them
         foreach ($request->subjects as $subject) {
@@ -59,12 +59,11 @@ class SubjectController extends Controller
      */
     public function showDashboard()
     {
-        $user = Auth::user(); // Get the current user
+        $user = Auth::user(); 
 
-        // Retrieve the user's selected subjects
         $selectedSubjects = $user->selectedSubjects; 
 
-        return view('dashboard.index', compact('selectedSubjects')); // Pass selected subjects to the dashboard view
+        return view('dashboard.index', compact('selectedSubjects')); // retrieve selected subjects to the dashboard
     }
 
     public function index()

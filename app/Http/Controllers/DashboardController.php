@@ -13,7 +13,6 @@ class DashboardController extends Controller
 
     public function index()
     {
-        // Get the currently authenticated user
         $user = auth()->user();
 
         // Retrieve the selected subjects for the user, with course data
@@ -22,7 +21,7 @@ class DashboardController extends Controller
         // Retrieve all courses
         $courses = Course::all();
 
-        // Pass the data to the view
+        // passing the data to the dashboard
         return view('dashboard.index', compact('user', 'selectedSubjects', 'courses'));
     }
 
@@ -32,7 +31,7 @@ class DashboardController extends Controller
 
     // Fetch selected courses
     $selectedSubjects = SelectedSubject::where('user_id', $user->id)
-        ->with('course') // Eager load the related course data
+        ->with('course') 
         ->get();
 
     return view('dashboard.index', [
